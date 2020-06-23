@@ -2,7 +2,7 @@ package be.vdab.EX109Course;
 
 public class Course {
     private String courseName;
-    private String[] students = new String[3];
+    private String[] students = new String[1];
     private int numberOfStudents;
 
     public Course(String courseName) {
@@ -10,18 +10,16 @@ public class Course {
     }
 
     public void addStudent(String student) {
+        if (numberOfStudents == students.length) {
+            String[] a = new String[students.length+1];
+            for (int i = 0; i < numberOfStudents; i++) {
+                a[i] = students[i];
+            }
+            students = a;
+        }
         students[numberOfStudents] = student;
         numberOfStudents++;
     }
-        /*numberOfStudents++;
-        if (numberOfStudents > students.length) {
-            String[] students = new String[numberOfStudents];
-            for (int i = 0; i < numberOfStudents-1; i++) {
-                students[i] = this.students[i];
-            }
-        }
-        students[numberOfStudents] = student;
-    }*/
 
     public String[] getStudents() {
         String[] newStudents = new String[numberOfStudents];
